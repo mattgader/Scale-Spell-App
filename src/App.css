@@ -1,5 +1,4 @@
 .App {
-  /* text-align: center; */
   background-attachment: fixed;
 }
 
@@ -9,41 +8,16 @@ html, body {
   overflow: hidden
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-} */
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
-
 .App-link {
   color: #61dafb;
 }
 
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-
 :root {
-  /* display:flex;
-  flex-direction: column;
-  align-items: center; */
-  /* justify-content: center; */
   background-attachment: fixed;
-  --light-color: #f5f4f3;
-  --medium-color1: #f53f3f;
-  --medium-color2: #ca4040;
-  --dark-color: #8a0b0b;
+  --light-color: rgb(230, 230, 247);
+  --medium-color1: blue;
+  --medium-color2: red;
+  --dark-color: #1b0e0f;
 }
 
 body {
@@ -59,11 +33,11 @@ body {
 
 .App-header {
   text-align: center;
-  font-size: calc(10px + 1vmin);
-  color: var(--light-color);
+  /* font-size: calc(10px + 1vmin); */
+  /* color: yellow; */
   border: 2px var(--dark-color);
   border-style: solid;
-  background-color: #c04949;
+  background-color: #42af73;
   margin-right: auto;
   margin-left: auto;
   height: 120px;
@@ -72,20 +46,36 @@ body {
 
 h1 { 
   color: var(--medium-color1);
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   text-shadow: 2px 2px var(--dark-color);
+}
+
+#Title {
+  font-size: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 p {
   color: var(--dark-color);
   font-size: 24px;
-  /* font-weight: bold; */
+}
+
+#About {
+  /* color: var(--light-color); */
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+
+}
+
+#MattGader {
+  /* color: var(--light-color); */
+  font-size: 16px;
+  margin-top: 0px;
 }
 
 #div1 {
-  /* background-color: red; */
-  /* height: 80px; */
-  /* width: 400px; */
   position: relative;
   top: 25px;
   left: 50px;
@@ -100,6 +90,15 @@ p {
   margin-top: 4%;
   border: 2px var(--dark-color);
   border-style: solid;
+  text-align-last: center;
+}
+
+select {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
 }
 
 #div2 {
@@ -111,13 +110,14 @@ p {
   left: 50px;
 }
 
-#ChooseNotes {
+#ChooseNote {
   display: inline;
   width: 50px;
   height: 45px;
   font-size: 25px;
   border: 2px var(--dark-color);
   border-style: solid;
+  text-align-last: center;
 }
 
 #FlatSharp {
@@ -125,9 +125,11 @@ p {
   width: 37px;
   height: 46px;
   margin-right: 15px;
+  /* padding-right: 5px; */
   font-size: 24px;
   border: 2px var(--dark-color);
   border-style: solid;
+  text-align-last: center;
 }
 
 .Root {
@@ -138,16 +140,26 @@ p {
   margin-right: 15px;
 }
 
-#Vs {
-  display: inline;
-  font-size: 40px;
+#rootBox {
+  display: inline-block;
   text-align: center;
+  background-color: white;
+
+  width: 51px;
+}
+
+#oct {
+  display: inline-block;
+  text-align: center;
+  background-color: white;
+  width: 73px;
+}
+
+#Vs {
+  font-size: 40px;
   padding-left: 18px;
   margin-top: 0%;
   margin-bottom: 0%;
-  letter-spacing: 33px;
-  width: 100%;
-  /* font-stretch: expanded; */ 
 }
 
 .DownArrow {
@@ -176,11 +188,7 @@ p {
 }
 
 #div3 {
-  /* background-color: red; */
   display: inline;
-
-  /* height: 150px; */
-  /* width: 500px; */
   position: relative;
   top: 25px;
   left: 50px;
@@ -192,7 +200,6 @@ p {
 }
 
 #div4 {
-  /* background-color: red; */
   height: 100px;
   width: 55%;
   position: relative;
@@ -207,19 +214,19 @@ p {
   display: inline-block;
   border-bottom: 1px solid black;
   margin-bottom: 20px;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-left: 10px;
+  margin-right: 140px;
 }
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  height: 70px;
-  width: 300px;
-  background-color: black;
-  color: #fff;
+  height: 100px;
+  width: 350px;
+  background-color: white;
+  color: black;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
+  padding: 8px;
   position: absolute;
   z-index: 1;
   bottom: 100%;
@@ -244,8 +251,24 @@ p {
 
 #Example {
   font-size: 40px;
+  letter-spacing: 3px;
 }
 
+#ToolTipArrows {
+  font-size: 30px;
+  /* letter-spacing: 5px; */
+}
+
+.ToolTipArrow {
+  margin-right: 6px;
+  margin-left: 6px;
+}
+
+#ExampleIntervals {
+  font-size: 20px;
+  letter-spacing: 9px;
+  padding-left: 9px;
+}
 .sidebar {
   height: 800px;
   width: 30%;
@@ -255,12 +278,27 @@ p {
   float: right;
   border: 2px var(--dark-color);
   border-style: solid;
-  /* padding-top: 40px; */
   margin-top: 150px;
   margin-right: 5%;
   background-color: var(--light-color);
   text-align: center;
   }
+
+.link {
+  color: white; 
+  text-decoration: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 12px 15px;
+  background-color: var(--medium-color2);
+  font-size: 26px;
+
+  font-weight: bold;
+}
+
+.link:hover {
+  color: blue;
+}
 
 #QuestionMark {
   text-align: center;
@@ -271,7 +309,7 @@ p {
 #SideDiv1 {
   height: 40px;
   position: relative;
-  font-size: 26px;
+  /* font-size: 26px; */
 }
 
 #SideDiv2 {
@@ -294,13 +332,13 @@ p {
 
 .tooltipSide .tooltiptext {
   visibility: hidden;
-  height: 70px;
+  height: 190px;
   width: 300px;
-  background-color: black;
-  color: #fff;
+  background-color: white;
+  color: black;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
+  padding: 8px;
   position: absolute;
   z-index: 1;
   bottom: 100%;
@@ -310,6 +348,14 @@ p {
 
 .tooltipSide:hover .tooltiptext {
   visibility: visible;
+}
+
+#LinkToolTip {
+  margin: 0%;
+}
+
+#TheoryBasics {
+  height: 40px;
 }
 
 #SideDiv3 {
@@ -347,10 +393,73 @@ p {
   font-size: 24px;
   border: 2px var(--dark-color);
   border-style: solid;
+  /* text-indent: 15px; */
+  text-align-last: center;
 }
 
 #NextNote {
   padding: 8px;
   border: 2px solid;
+  background-color: white;
   margin-right: 15px;
+}
+
+#Theory1 {
+  padding-top: 100px;
+  text-align: center;
+}
+
+#TheoryCMajor {
+  font-size: 28px;
+  text-align: center;
+  margin-top: 3%;
+  margin-bottom: 0%;
+  /* margin-left: 63px; */
+  letter-spacing: 35px;
+  width: 100%;
+}
+
+#TheoryArrows {
+  font-size: 40px;
+  padding-left: 22px;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+.TheoryArrow {
+  margin-right: 55px;
+}
+
+#TheorySteps {
+  font-size: 28px;
+  text-align: center;
+  margin-top: 0%;
+  letter-spacing: 31px;
+  width: 100%;
+}
+
+#TheoryWholeHalf {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 0%;
+  margin-bottom: 5%;
+  width: 100%;
+}
+
+#Theory2 {
+  padding-top: 100px;
+  text-align: center;
+}
+
+#Theory2Last {
+  margin-bottom: 13%;
+}
+
+#Theory3 {
+  padding-top: 100px;
+  text-align: center;
+}
+
+#Theory3Last {
+  margin-bottom: 9%;
 }

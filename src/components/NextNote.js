@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import ChooseNote from "./ChooseNote";
+import { nextNote } from "../modules/NoteData";
 
-function NextNote () {
+function NextNote ({ onChange }) {
+    // does this stuff need to be sent to parent? 
+    const [startNote, setStartNote] = useState('')
+    const [interval, setInterval] = useState('')
+    // const[displayNote, setDisplayNote] = useState('Next Note')
+    const onNoteChange = (id, note) => {
+        setStartNote(note)
+    }
+    const onIntervalChange = event => {
+        setInterval(event.target.value)
+    }
+    let displayNote = ""
+    if (startNote !== '' && interval !== '') {
+        displayNote = nextNote(startNote, interval)
+        // setDisplayNote(next)
+    }
+
     return (
         <div>
             <div id="NextNoteTextDiv">
@@ -9,27 +27,13 @@ function NextNote () {
                 <p className="NextNoteText">2. Choose an interval</p>
             </div>
             <span>
-                <select name="ChooseNotes" id="ChooseNotes">
+                <ChooseNote onChange={onNoteChange}/>
+                <select name="NextStep" id="NextStep" onChange={onIntervalChange}> 
                     <option value=''> </option>
-                    <option value='A'>A</option>
-                    <option value='B'>B</option>
-                    <option value='C'>C</option>
-                    <option value='D'>D</option>
-                    <option value='E'>E</option>
-                    <option value='F'>F</option>
-                    <option value='G'>G</option>
+                    <option value='2'>W</option>
+                    <option value='1'>H</option>
                 </select>
-                <select name="NextFlatSharp" id="NextFlatSharp">
-                    <option value='natural'> </option>
-                    <option value='flat'>b</option>
-                    <option value='sharp'>#</option>
-                </select>
-                <select name="NextStep" id="NextStep">
-                    <option value=''> </option>
-                    <option value='WholeStep'>W</option>
-                    <option value='HalfStep'>H</option>
-                </select>
-                <span id="NextNote">Next Note</span>
+                <span id="NextNote">Next Note: {displayNote}</span>
             </span>
      </div>
     );
