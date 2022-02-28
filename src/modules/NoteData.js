@@ -59,8 +59,6 @@ function checkScale (root, inputScale) {
     console.log('data ' + scale)
     console.log('input ' + inputScale)
     for (let i = 0; i < 8; i++) {
-        // console.log(scale[i])
-        // console.log(inputScale[i])
         if (scale[i] !== inputScale[i]) {
             return false
         } 

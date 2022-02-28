@@ -37,7 +37,7 @@ function HomePage () {
 
         </div>
         <div id="div2">
-          <p>2. Spell the scale by clicking the boxes below:</p>
+          <p>2. Spell the major scale by clicking the boxes below:</p>
           <SpellScale currentKey={currentKey} onChange={onScaleChange}/>
           <IntervalArrows/>
           <p id="Steps">W   W   H   W   W   W   H</p>
@@ -55,12 +55,12 @@ function HomePage () {
             <div id="ExampleIntervals">W W H W W W H</div>
           </ToolTip>
           <FaQuestionCircle/>
-          <ToolTip label='Hint 1'>
+          <ToolTip label='Hint_1'>
             Other than the root note, which is spelled
             at the beginning and end, every letter (A-G) is used once
           </ToolTip>
           <FaQuestionCircle/>
-          <ToolTip label='Hint 2'>
+          <ToolTip label='Hint_2'>
             Use the features on the sidebar if you're stuck
           </ToolTip>
         </div>

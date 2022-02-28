@@ -269,6 +269,15 @@ select {
   letter-spacing: 9px;
   padding-left: 9px;
 }
+
+#Hint_1 {
+  height: 55px;
+}
+
+#Hint_2 {
+  height: 20px;
+}
+
 .sidebar {
   height: 800px;
   width: 30%;
@@ -356,6 +365,18 @@ select {
 
 #TheoryBasics {
   height: 40px;
+}
+
+#MajorScale {
+  height: 170px;
+}
+
+#Interval {
+  height: 230px;
+}
+
+#HalfStep {
+  height: 170px;
 }
 
 #SideDiv3 {
