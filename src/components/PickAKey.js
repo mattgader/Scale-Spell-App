@@ -1,9 +1,8 @@
-import React from "react"
+import React from "react";
 
 function PickAKey ({ onChange, currentKey='' })  {
-    // const keyArray = ['','C','G','D','']
-
     return (
+
         <div>
             <label htmlFor="PickAKey">1. Click here to pick a key: </label>
             <select name="PickAKey" id="PickAKey" onChange={onChange}
@@ -23,11 +22,10 @@ function PickAKey ({ onChange, currentKey='' })  {
                 <option value='Ab'>Ab</option>
                 <option value='Db'>Db</option>
                 <option value='Gb'>Gb</option>
-
             </select>
         </div>
-    )
+
+    );
 }
 
-// onmousedown="this.value='';" onchange="jsFunction(this.value);"
 export default PickAKey;

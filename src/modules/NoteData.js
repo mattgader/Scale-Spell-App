@@ -1,6 +1,3 @@
-import React from 'react'
-
-
 const chromaticFlats = [
     'C', 'Db', 'D', 'Eb', 'E', 'F', 
     'Gb', 'G', 'Ab', 'A', 'Bb', 'B'
@@ -15,86 +12,85 @@ const flatKeys = [
     'C', 'F', 'Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb'
 ]
 
-const sharpKeys = [
-    'G', 'D', 'A', 'E', 'B', 'F#', 'C#'
-]
-
 const diatonicSequence = [
     2, 2, 1, 2, 2, 2, 1
 ]
 
-function spellScale (key, mode = 0) {
-    const scale = []
-    let root = null
-    let chromatic = null
-    if (flatKeys.includes(key)) {
-        root = chromaticFlats.indexOf(key)
-        scale.push(chromaticFlats[root])
-        chromatic = chromaticFlats
-    }  
-    if (sharpKeys.includes(key)) {
-        root = chromaticSharps.indexOf(key)
-        scale.push(chromaticSharps[root])
-        chromatic = chromaticSharps
-    } 
-    for (let i = 0; i < 7; i++) {
-        let x = diatonicSequence[(mode % 7) + i]
-        scale.push(chromatic[(root + x) % 12])
-        root = root + x
-    } if (key === 'Gb') {
-        scale[3] = 'Cb'
-    }  
-    // could attempt Cb, which isn't in 'chromaticFlats'
-    if (key === 'F#') {
-        scale[6] = 'E#'
-    } if (key === 'C#') {
-        scale[2] = 'E#'
-        scale[6] = 'B#'
+const enharmonic = {
+    1: {
+        'E#': 'F#', 
+        'B#': 'C#',
+        'Bb': 'Cb',
+        'Eb': 'Fb'
+    },
+    2: {
+        'A#': 'B#',
+        'D#': 'E#',
+        'B': 'C#',
+        'E': 'F#'
     }
-    return scale
+}
+
+function spellScale (key, mode = 0) {
+    const scale = [];
+    const chromatic = flatKeys.includes(key) ? 
+        chromaticFlats : 
+        chromaticSharps;
+    let noteIndex = chromatic.indexOf(key);
+    scale.push(chromatic[noteIndex]);
+    return spellScaleHelper(scale, mode, noteIndex, chromatic);
+}
+
+function spellScaleHelper(scale, mode, noteIndex, chromatic) {
+    for (let i = 0; i < 7; i++) {
+        let step = diatonicSequence[(mode % 7) + i];
+        scale.push(chromatic[(noteIndex + step) % 12]);
+        noteIndex = noteIndex + step;
+    } 
+    if (scale[0] === 'Gb') {
+        scale[3] = 'Cb';
+    } 
+    if (scale[0] === 'F#') {
+        scale[6] = 'E#';
+    } 
+    if (scale[0] === 'C#') {
+        scale[2] = 'E#';
+        scale[6] = 'B#';
+    }
+    return scale;
 }
 
 function checkScale (root, inputScale) {
-    const scale = spellScale(root)
-    console.log('data ' + scale)
-    console.log('input ' + inputScale)
+    const scale = spellScale(root);
     for (let i = 0; i < 8; i++) {
         if (scale[i] !== inputScale[i]) {
-            return false
+            return false;
         } 
     }
-    return true
+    return true;
 }
 
 function nextNote (note, interval) {
-    let index = 0
-    let next = 0
-    let nextIndex = 0
-    if (note.includes('#')) {
-        index = chromaticSharps.indexOf(note)
-        nextIndex = parseInt(index) + parseInt(interval)
-        next = chromaticSharps[(nextIndex) % 12]
-        // couldn't get if (a && b) to work
-    } else if (note === 'E') {
-        if (parseInt(interval) === 2) {
-            next = 'F#'
-        }
-    } else if (note === 'B') {
-        if (parseInt(interval) === 2) {
-            next = 'C#'
-        }
-    } else if (note === 'E') {
-        if (parseInt(interval) === 1) {
-            next = 'X'
-        }
-    } else {
-        index = chromaticFlats.indexOf(note)
-        nextIndex = parseInt(index) + parseInt(interval)
-        next = chromaticFlats[(nextIndex) % 12]
-    }
-    return next
+    if (enharmonicNextNote(note, interval) !== 0) {
+        return enharmonicNextNote(note, interval);
+    } 
+    const chromatics = note.includes('#') ? 
+        chromaticSharps :
+        chromaticFlats;
+    const index = chromatics.indexOf(note);
+    const nextIndex = parseInt(index) + parseInt(interval);
+    const next = chromatics[(nextIndex) % 12];
+    return next;
 }
 
-export { checkScale, nextNote }
+function enharmonicNextNote (note, interval) {
+    let next = 0
+    const enh = enharmonic[interval];
+    const enhNotes = Object.keys(enh)
+    if (enhNotes.includes(note)) {
+        next = enh[note];
+    }
+    return next;
+}
 
-// window.spellScale = spellScale
+export { checkScale, nextNote };

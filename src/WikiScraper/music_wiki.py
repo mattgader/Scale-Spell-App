@@ -14,4 +14,4 @@ def wiki_search(term):
 
 if __name__ == "__main__":
     wiki_search(sys.argv[1])
-
+    

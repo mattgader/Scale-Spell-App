@@ -1,15 +1,17 @@
 import React from "react";
 import NextNote from "./NextNote";
 import { Link } from 'react-router-dom';
-import searchTerms from '../searchTerms.json'
+import searchTerms from '../searchTerms.json';
 
 function Sidebar () {
     return (
+
           <div className="sidebar">
             <div id="QuestionMark">
                 <strong>?</strong>
             </div>
-            <div className="tooltipSide"><Link className='link' id="LinkToolTip" to='../theory1'>Music Theory Basics</Link>
+            <div className="tooltipSide">
+                <Link className='link' id="LinkToolTip" to='../theory1'>Music Theory Basics</Link>
                 <span className="tooltiptext" id="TheoryBasics">
                     Click here to learn some basic music theory to assist 
                     in spelling the scale
@@ -39,13 +41,23 @@ function Sidebar () {
                         {searchTerms["semitone"]}
                     </span>
                 </div>
+                <div className="tooltipSide">Accidental
+                    <span className="tooltiptext" id="Accidental">
+                        {searchTerms["accidental_music"]}
+                    </span>
+                </div>
+                <div className="tooltipSide">Pitch
+                    <span className="tooltiptext" id="Pitch">
+                        {searchTerms["pitch_music"]}
+                    </span>
+                </div>
             </div>
             <div id="SideDiv3">
                 <NextNote />
             </div>
           </div>
-    )   
-}
 
+    );
+}
 
 export default Sidebar;

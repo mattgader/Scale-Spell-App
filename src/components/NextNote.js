@@ -3,10 +3,8 @@ import ChooseNote from "./ChooseNote";
 import { nextNote } from "../modules/NoteData";
 
 function NextNote ({ onChange }) {
-    // does this stuff need to be sent to parent? 
     const [startNote, setStartNote] = useState('')
     const [interval, setInterval] = useState('')
-    // const[displayNote, setDisplayNote] = useState('Next Note')
     const onNoteChange = (id, note) => {
         setStartNote(note)
     }
@@ -16,10 +14,9 @@ function NextNote ({ onChange }) {
     let displayNote = ""
     if (startNote !== '' && interval !== '') {
         displayNote = nextNote(startNote, interval)
-        // setDisplayNote(next)
     }
-
     return (
+
         <div>
             <div id="NextNoteTextDiv">
                 <p>Next Note Helper</p>
@@ -36,6 +33,7 @@ function NextNote ({ onChange }) {
                 <span id="NextNote">Next Note: {displayNote}</span>
             </span>
      </div>
+     
     );
 }
 

@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 function ChooseNote ({id='', onChange}) {
     const noteRef = React.useRef(null)
@@ -8,9 +8,10 @@ function ChooseNote ({id='', onChange}) {
         onChange(id, note)
     }
     return (
+
     <span>
         <select name="ChooseNote" id="ChooseNote" ref={noteRef} onChange={onNoteChange}>
-        <   option value=''> </option>
+        <option value=''> </option>
             <option value='A'>A</option>
             <option value='B'>B</option>
             <option value='C'>C</option>
@@ -25,6 +26,7 @@ function ChooseNote ({id='', onChange}) {
             <option value='#'>#</option>
         </select>
      </span>
+
     );
 }
 
